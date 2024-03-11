@@ -4,12 +4,17 @@ namespace Controller;
 
 defined('ROOTPATH') or exit('Access Denied!');
 
-class _404
+/**
+ * logout class
+ */
+class Logout
 {
 	use MainController;
 
 	public function index()
 	{
-		$this->view('404');
+		$ses = new \Core\Session;
+		$ses->logout();
+		redirect('login');
 	}
 }
