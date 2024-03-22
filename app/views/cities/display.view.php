@@ -12,7 +12,7 @@
     <div class="container my-5">
         <div class="col">
             <h2>قائمة المدن</h2>
-            <a class="btn btn-primary" href="<?=ROOT?>/cities/add" role="button">إضافة مدينة</a>
+            <a class="btn btn-primary" href="<?= ROOT ?>/cities/add" role="button">إضافة مدينة</a>
         </div>
     </div>
     <div class="container container-sm">
@@ -26,15 +26,13 @@
                     <th>الإجراءات</th>
                 </thead>
                 <tbody>
-                    <?php ; 
-                    foreach($cities as $row): //print_r($cities); ?>
+                    <?php foreach ($cities as $row) : //print_r($cities); 
+                    ?>
                         <tr>
-                        <td><?= $no++ ?></td>
-
-                            <td><?=$row->city_id?></td>
-                            <td><?=$row->city_name?></td>
-                            <td><?=$row->city_code?></td>
-
+                            <td><?= $no++ ?></td>
+                            <td><?= $row->city_id ?></td>
+                            <td><?= $row->city_name ?></td>
+                            <td><?= $row->city_code ?></td>
                             <td>
                                 <a href='' class='btn btn-success'>تعديل</a>
                                 <a href='' class='btn btn-danger'>حذف</a>

@@ -12,7 +12,7 @@ class Cities
 
 	public function index()
 	{
-		$cities = new \Model\Cities_m;
+		$cities = new \Model\Cities;
 		$cities->order_column = 'city_id';
 		$arr['is_deleted'] = 0 ;
 		$data['no'] = 1;
@@ -26,7 +26,7 @@ class Cities
 		$this->view('cities/add');
 
 		if (isset($_POST['btn_add_city'])) {
-			$cities = new \Model\Cities_m;
+			$cities = new \Model\Cities;
 			if (!empty($_POST['city_name'])) {
 				$data['city_name'] = $_POST['city_name'];
 				$data['city_code'] = $_POST['city_code'];
