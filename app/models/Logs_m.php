@@ -7,7 +7,7 @@ defined('ROOTPATH') or exit('Access Denied!');
 /**
  * Logs class
  */
-class Logs
+class Logs_m
 {
 
 	use Model;
