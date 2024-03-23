@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `failed_attempts` int(11) NOT NULL DEFAULT 0 COMMENT 'لتتبع عدد المرات التي تم فيها محاولة تسجيل الدخول بكلمة مرور غير صحيحة.',
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `is_deleted` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'Flag to mark deleted users', 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;

@@ -17,10 +17,12 @@ class User
 	protected $loginUniqueColumn = 'email';
 
 	protected $allowedColumns = [
-
 		'username',
 		'email',
 		'password',
+		'role',
+		'status',
+		'is_deleted', // Added is_deleted column
 	];
 
 	/*****************************
@@ -38,48 +40,26 @@ class User
 	 * 
 	 ****************************/
 	protected $onInsertValidationRules = [
-
-		'email' => [
-			'email',
-			'unique',
-			'required',
-		],
-		'username' => [
-			'alpha',
-			'required',
-		],
-		'password' => [
-			'not_less_than_8_chars',
-			'required',
-		],
+		'email' => ['email', 'unique', 'required'],
+		'username' => ['alpha', 'required'],
+		'password' => ['not_less_than_8_chars', 'required'],
 	];
 
 	protected $onUpdateValidationRules = [
-
-		'email' => [
-			'email',
-			'unique',
-			'required',
-		],
-		'username' => [
-			'alpha',
-			'required',
-		],
-		'password' => [
-			'not_less_than_8_chars',
-			'required',
-		],
+		'email' => ['email', 'unique', 'required'],
+		'username' => ['alpha', 'required'],
+		'password' => ['not_less_than_8_chars', 'required'],
 	];
 
 	public function signup($data)
 	{
 		if($this->validate($data))
 		{
-			//add extra user columns here
 			$data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 			$data['date'] = date("Y-m-d H:i:s");
 			$data['date_created'] = date("Y-m-d H:i:s");
-
+			$data['role'] = 1;
+			$data['status'] = 'active';
 			$this->insert($data);
 			redirect('login');
 		}
@@ -87,11 +67,8 @@ class User
 
 	public function login($data)
 	{
-		$row = $this->first([$this->loginUniqueColumn=>$data[$this->loginUniqueColumn]]);
-
+		$row = $this->first([$this->loginUniqueColumn => $data[$this->loginUniqueColumn]]);
 		if($row){
-
-			//confirm password
 			if(password_verify($data['password'], $row->password))
 			{
 				$ses = new \Core\Session;

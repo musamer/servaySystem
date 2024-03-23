@@ -135,6 +135,26 @@ function URL($key): mixed
   }
 }
 
+function edit()  {
+  $data['user'] =new \Model\User;
+$req = new \Core\Request;
+
+  $arr['is_deleted'] = 0;
+  $arr['id'] = get_id_from_url($_GET);
+  $data['userdata']=$data['user']->first($arr);
+  if($req->posted())
+  {
+      $data['user']->update($req->post('id'),$req->post());
+  }
+$this->view('edit_info',$data);
+  
+}
+
+function get_id_from_url($URL){
+  $URL = explode("/", trim($_GET['url'], "/"));
+  $ID = end($URL);
+  return $ID;
+}
 
 /** displays input values after a page refresh **/
 function old_checked(string $key, string $value, string $default = ""): string
@@ -186,6 +206,7 @@ function get_date($date)
 {
   return date("jS M, Y", strtotime($date));
 }
+
 
 
 /** comverts image paths from relative to absolute **/
