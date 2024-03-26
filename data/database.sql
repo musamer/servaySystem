@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `is_deleted` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'Flag to mark deleted users', 
+  `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
