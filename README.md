@@ -12,17 +12,17 @@
 
 ```php
 public function index()
-	{
-		/** check isset session  */
-		$ses  = new \Core\Session;
-		if (!$ses->is_logged_in()) {
-			redirect('login');
-		}
+{
+  /** check isset session  */
+  $ses  = new \Core\Session;
+  if (!$ses->is_logged_in()) {
+    redirect('login');
+  }
 
-		$this->view('header');
-		$this->view('home');
-		$this->view('footer');
-	}
+  $this->view('header');
+  $this->view('home');
+  $this->view('footer');
+}
 ```
 
 # template file License
