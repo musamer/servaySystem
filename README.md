@@ -4,13 +4,25 @@
 
 - how to add template files
 
+## new updated
+
+- add session condition
+- add template for login and signup pages
+- belew code for controller Home
+
 ```php
 public function index()
-{
-    $this->view('header');
-    $this->view('home');
-    $this->view('footer');
-}
+	{
+		/** check isset session  */
+		$ses  = new \Core\Session;
+		if (!$ses->is_logged_in()) {
+			redirect('login');
+		}
+
+		$this->view('header');
+		$this->view('home');
+		$this->view('footer');
+	}
 ```
 
 # template file License

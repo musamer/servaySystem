@@ -13,6 +13,12 @@ class Home
 	/** this is main home */
 	public function index()
 	{
+		/** check isset session  */
+		$ses  = new \Core\Session;
+		if (!$ses->is_logged_in()) {
+			redirect('login');
+		}
+
 		$this->view('header');
 		$this->view('home');
 		$this->view('footer');
