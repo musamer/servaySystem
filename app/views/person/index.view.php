@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,46 +28,44 @@
         }    
     ?>
 
-        <a href="add_new.php" class="btn btn-dark mb-3">Add New</a>
+        <a href="add" class="btn btn-dark mb-3">Add New</a>
 
         <table class="table table-hover text-center">
     <thead class="table-dark">
     <tr>
-        <th scope="col">حذف\تعديل</th>
-        <th scope="col">الجنس</th>
-        <th scope="col">الايميل</th>
-        <th scope="col">تاريخ الميلاد</th>
-        <th scope="col">الاسم الاخير</th>
-        <th scope="col">الاسم الاول</th>
         <th scope="col">الهوية الوطنية</th>
+        <th scope="col">الاسم الاول</th>
+        <th scope="col">الاسم الثاني</th>
+        <th scope="col">الاسم الثالث</th>
+        <th scope="col">الاسم الاخير</th>
+        <th scope="col">الأيميل</th>
+        <th scope="col">تاريخ الميلاد</th>
+        <th scope="col">الجنس</th>
+        <th scope="col">حذف\تعديل</th>
     </tr>
     </thead>
     <tbody>
 
-    <?php
-
-        include "/Database.php";
-
-        $sql = "SELECT * FROM `person`";
-        $result = mysqli_query(connect(), $sql);
-        while($row = mysqli_fetch_assoc($result)){
-            ?>
+    <?php if(!empty($personData)): foreach($personData as $row):?>
+        
                 <tr>
-                    <td><?php echo $row['id'] ?></td>
-                    <td><?php echo $row['first_name'] ?></td>
-                    <td><?php echo $row['last_name'] ?></td>
-                    <td><?php echo $row['email'] ?></td>
-                    <td><?php echo $row['gender'] ?></td>
+                    <td><?=$row->person_id?></td>
+                    <td><?=$row->first_name?></td>
+                    <td><?=$row->second_name?></td>
+                    <td><?=$row->third_name?></td>
+                    <td><?=$row->last_name?></td>
+                    <td><?=$row->email?></td>
+                    <td><?=$row->birth_date?></td>
+                    <td><?=$row->gender?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $row['id']?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-                        <a href="delete.php?id=<?php echo $row['id']?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+                        <a href="<?=ROOT?>/person/edit/<?=base64_encode($row->person_id)?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                        <a href="<?=ROOT?>/person/delete/<?=base64_encode($row->person_id)?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
                     </td>
                 </tr>
-            <?php
-        }
-
-
-    ?>
+                <?php endforeach; endif;?>
+                
+                
+    
     </tbody>
 </table>
     </div>

@@ -35,6 +35,12 @@ function check_extensions()
   }
 }
 
+function get_id_from_link($URL)
+{
+  $URL = explode("/", trim($_GET['url'], "/"));
+  $ID = end($URL);
+  return $ID;
+}
 
 function show($stuff)
 {
