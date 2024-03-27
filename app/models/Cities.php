@@ -30,11 +30,13 @@ class Cities
       $this->insert($data);
    }
 
-   public function edit_city()
-   {
+   public function edit_city($id , $data , $id_column)
+   { 
+      $this->update($id , $data , $id_column );
    }
 
-   public function delete_city()
+   public function delete_city($id , $data , $id_column  )
    {
+      $this->update($id , $data , $id_column);
    }
 }

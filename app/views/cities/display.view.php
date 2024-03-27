@@ -20,22 +20,21 @@
             <table class="table table-bordered text-center table-sm table-responsive">
                 <thead class="table-dark">
                     <th>#</th>
-                    <th>الرقم المرجعي</th>
-                    <th>أسم المدينة</th>
-                    <th>كود المدينة</th>
-                    <th>الإجراءات</th>
+                    <th style="width:auto">الرقم المرجعي</th>
+                    <th style="width:auto">أسم المدينة</th>
+                    <th style="width:auto">كود المدينة</th>
+                    <th style="width:auto">الإجراءات</th>
                 </thead>
                 <tbody>
-                    <?php foreach ($cities as $row) : //print_r($cities); 
-                    ?>
+                    <?php foreach ($cities as $row): ?>
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $row->city_id ?></td>
                             <td><?= $row->city_name ?></td>
                             <td><?= $row->city_code ?></td>
                             <td>
-                                <a href='' class='btn btn-success'>تعديل</a>
-                                <a href='' class='btn btn-danger'>حذف</a>
+                                <a href="<?= ROOT ?>/cities/edit/<?=base64_encode($row->city_id)?>" class='btn btn-success'>تعديل</a>
+                                <a href="<?= ROOT ?>/cities/delete/<?=base64_encode($row->city_id)?>" class='btn btn-danger'>حذف</a>
                             </td>
                         </tr>
 

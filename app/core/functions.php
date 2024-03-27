@@ -325,3 +325,10 @@ function delete_images_from_content(string $content, string $content_new = ''): 
     }
   }
 }
+
+function get_id_from_link($URL)
+{
+  $URL = explode("/", trim($_GET['url'], "/"));
+  $ID = end($URL);
+  return $ID ;
+}
