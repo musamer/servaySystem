@@ -1,0 +1,38 @@
+/* css styling for researcher page */ 
+/* ******************************* */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Noto+Kufi+Arabic:wght@500&display=swap');
+body {font-family: Cairo;}
+
+
+.section {
+  
+    border-radius: 11px;
+    margin: 10px auto;
+    background-color: #dde7e8;
+    font-size: 14px;
+    color: #052f35;
+  }
+  .section_title{
+    border-top-left-radius: 11px;
+     border-top-right-radius: 11px;
+       padding: 10px;
+    background-color: #40838d;
+    color: #dde8e3;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .sec_data,.sec_form{
+    padding: 5px;
+  }
+  .sec_form input,button{
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  .sec_form{display: none;}
+  /* .row{margin-top: 10px;}
+  .col{display: inline-block;margin-right: 10px;max-width: 170px;} */
+  .sec_edit{float: left;}
+  
+/* ************************************* */

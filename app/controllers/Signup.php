@@ -19,7 +19,7 @@ class Signup
 		if ($req->posted()) {
 			$data['user']->signup($_POST);
 		}
-
+		$this->view('header');
 		$this->view('signup', $data);
 	}
 }
