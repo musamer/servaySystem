@@ -6,11 +6,11 @@
 
 ```php
 public function index()
-	{
-		$this->view('header');
-		$this->view('home');
-		$this->view('footer');
-	}
+{
+    $this->view('header');
+    $this->view('home');
+    $this->view('footer');
+}
 ```
 
 # template file License
