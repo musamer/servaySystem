@@ -1,6 +1,14 @@
 # Servay System
-## Edit 
-- Preorder Structure
-- Add Login and Signup pages
-- Update User Model
-- Add Logs Model
+
+## add template files
+
+- how to add template files
+
+```
+public function index()
+	{
+		$this->view('header');
+		$this->view('home');
+		$this->view('footer');
+	}
+```
