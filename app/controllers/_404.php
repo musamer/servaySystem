@@ -10,6 +10,8 @@ class _404
 
 	public function index()
 	{
+		$this->view('header');
 		$this->view('404');
+		$this->view('footer');
 	}
 }

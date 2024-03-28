@@ -19,7 +19,7 @@ class Login
 		if ($req->posted()) {
 			$data['user']->login($_POST);
 		}
-
+		$this->view('header');
 		$this->view('login', $data);
 	}
 }

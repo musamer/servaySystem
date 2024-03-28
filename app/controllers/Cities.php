@@ -43,19 +43,16 @@ class Cities
 	{  
 		$cities = new \Model\Cities;
 		//$arr['is_deleted'] = 0;
-		$arr['city_id'] = base64_decode(get_id_from_link($_GET));
+		$arr['city_id'] = base64_decode(get_id_from_url($_GET));
 		$data['cityData'] = $cities->first($arr);
 		$this->view('cities/edit' , $data);
 		//show($data);
 
 		if (isset($_POST['btn_edit_city'])) {
 			if (!empty($_POST['city_name'])) {
-				$id = $_POST['city_id'] ;
-				$id_column = 'city_id';
-				show($id);
-				$data['city_name'] = $_POST['city_name'];
-				$data['city_code'] = $_POST['city_code'];
-				$cities->edit_city( $id , $data, $id_column);
+				array_pop($_POST);
+			
+				$cities->edit_city( $_POST['city_id'] , $_POST, 'city_id');
 				redirect('cities');
 				exit();
 			} else {
@@ -72,7 +69,7 @@ class Cities
 	public function delete()
 	{
 		$data['cityData'] = new \Model\Cities;
-		$id = base64_decode(get_id_from_link( $_GET));
+		$id = base64_decode(get_id_from_url( $_GET));
 		$id_column = 'city_id';
 		$arr['is_deleted'] = 1;
 		$data['cityData']->delete_city($id , $arr , $id_column);

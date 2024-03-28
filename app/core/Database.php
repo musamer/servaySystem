@@ -7,7 +7,7 @@ defined('ROOTPATH') or exit('Access Denied!');
 trait Database
 {
 
-	public function connect()
+	private function connect()
 	{
 		$string = "mysql:hostname=" . DBHOST . ";dbname=" . DBNAME;
 		$con = new \PDO($string, DBUSER, DBPASS);

@@ -32,7 +32,7 @@ class Cities
 
    public function edit_city($id , $data , $id_column)
    { 
-      $this->update($id , $data , $id_column );
+      $this->update($id , $data , $id_column);
    }
 
    public function delete_city($id , $data , $id_column  )

@@ -1,1 +1,1 @@
-<h1>Home page view</h1>
+<h1>Home page view </h1>
