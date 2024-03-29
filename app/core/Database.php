@@ -19,7 +19,6 @@ trait Database
 
 		$con = $this->connect();
 		$stm = $con->prepare($query);
-
 		$check = $stm->execute($data);
 		if ($check) {
 			$result = $stm->fetchAll(\PDO::FETCH_OBJ);

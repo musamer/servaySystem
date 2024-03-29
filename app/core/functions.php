@@ -54,6 +54,14 @@ function redirect($path)
   die;
 }
 
+function get_id_from_url($URL){
+  $URL = explode("/", trim($_GET['url'], "/"));
+  $ID = end($URL);
+  return $ID;
+}
+
+
+
 /** load image. if not exist, load placeholder **/
 function get_image(mixed $file = '', string $type = 'post'): string
 {
