@@ -38,8 +38,7 @@
             
         }
 
-        .form-group input[type="id"],
-        .form-group input[type="text"],
+        
         .form-group input[type="date"],
         .form-group input[type="time"] {
             

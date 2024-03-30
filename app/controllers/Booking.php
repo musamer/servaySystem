@@ -46,7 +46,6 @@ class Booking
 		$req = new \Core\Request;
 		$book = new \Model\Booking;
 		$id = base64_decode(get_id_from_url($_GET));
-		$arr['is_deleted'] = 0;
 		$arr['id'] = $id;
 		$data['bookingData'] = $book->first($arr);
 		if ($req->posted()) {
