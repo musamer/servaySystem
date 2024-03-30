@@ -12,68 +12,93 @@ class Cities
 
 	public function index()
 	{
+		// $ses  = new \Core\Session;
+		// if (!$ses->is_logged_in()) {
+		// 	redirect('login');
+		// }
+
 		$cities = new \Model\Cities;
 		$cities->order_column = 'city_id';
 		$arr['is_deleted'] = 0 ;
 		$data['no'] = 1;
 		$data['cities'] = $cities->where($arr);
+
+
+		$this->view('header');
 		$this->view('cities/display', $data);
+		$this->view('footer');
 
 	}
 
 	public function add()
 	{
-		$this->view('cities/add');
 
-		if (isset($_POST['btn_add_city'])) {
-			$cities = new \Model\Cities;
+		// $ses  = new \Core\Session;
+		// if (!$ses->is_logged_in()) {
+		// 	redirect('login');
+		// }
+		$cities = new \Model\Cities;
+		$req = new \core\Request;
+
+
+
+		if($req->posted()){
 			if (!empty($_POST['city_name'])) {
 				$data['city_name'] = $_POST['city_name'];
 				$data['city_code'] = $_POST['city_code'];
-				$cities->add_city($data);
-				redirect('cities');;
-				exit();
+				$cities->insert($data);
+				redirect('cities');
 			} else {
 				echo "إسم المدينة لايمكن أن يكون فارغ";
 			}
+
 		}
+
+		$this->view('header');
+		$this->view('cities/add');
+		$this->view('footer');
 	}
 
 	public function edit()
-	{  
+	{  	
+		// $ses  = new \Core\Session;
+		// if (!$ses->is_logged_in()) {
+		// 	redirect('login');
+		// }
+
+
 		$cities = new \Model\Cities;
-		//$arr['is_deleted'] = 0;
+		$req = new \Core\Request;
 		$arr['city_id'] = base64_decode(get_id_from_url($_GET));
 		$data['cityData'] = $cities->first($arr);
-		$this->view('cities/edit' , $data);
-		//show($data);
 
-		if (isset($_POST['btn_edit_city'])) {
-			if (!empty($_POST['city_name'])) {
-				array_pop($_POST);
-			
-				$cities->edit_city( $_POST['city_id'] , $_POST, 'city_id');
+			if( $req->posted()){
+				$cities->update( $req->post('city_id') , $req->post(), 'city_id');
 				redirect('cities');
 				exit();
-			} else {
-				echo "إسم المدينة لايمكن أن يكون فارغ";
 			}
-		}
 
-		if (isset($_POST['btn_canceledit_city'])) {
-			redirect('cities');
-			exit();
-		}
+
+		$this->view('header');
+		$this->view('cities/edit' , $data);
+		$this->view('footer');
+
 	}
 
 	public function delete()
 	{
+		// $ses  = new \Core\Session;
+		// if (!$ses->is_logged_in()) {
+		// 	redirect('login');
+		// }
+
+
 		$data['cityData'] = new \Model\Cities;
 		$id = base64_decode(get_id_from_url( $_GET));
 		$id_column = 'city_id';
 		$arr['is_deleted'] = 1;
-		$data['cityData']->delete_city($id , $arr , $id_column);
-		redirect('cities');
+		$data['cityData']->update($id , $arr , $id_column);
+		redirect('cities/display');
 		exit();
 
 	}

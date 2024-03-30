@@ -10,23 +10,25 @@
 </head>
 
 <body class="container my-5">
+
     <div class="container my-5">
-         <h1>إضافة مدينة</h1>
-        <div class="col-3" >
+        <h1>إضافة مدينة</h1>
+
+        <div class="col-3">
+
             <div class="container my-5">
 
                 <form class="add_city" method="post">
                     <input class="form-control" name="city_name" type="text" placeHolder="إسم المدينة" require="required"><br>
                     <input class="form-control" name="city_code" type="text" placeHolder="كود المدينة مثل 'MED'"><br>
                     <input class="btn btn-primary btn_block" name="btn_add_city" type="submit" value="أضف" />
-
+                    <a  class="btn btn-danger btn_block" href="<?= ROOT ?>/cities">رجوع</a>
                 </form>
             </div>
 
         </div>
 
     </div>
-
 
 </body>
 

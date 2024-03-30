@@ -10,43 +10,45 @@
 
 <body>
     <div class="container my-5">
-        <div class="col">
-            <h2>قائمة المدن</h2>
-            <a class="btn btn-primary" href="<?= ROOT ?>/cities/add" role="button">إضافة مدينة</a>
-        </div>
+
+        <h2>قائمة المدن</h2> <br>
+        <a class="btn btn-primary" href="<?= ROOT ?>/cities/add" role="button">
+            <i class='bx bx-plus-circle'> إضافة مدينة </i></a>
+
     </div>
+
     <div class="container container-sm">
-        <div>
-            <table class="table table-bordered text-center table-sm table-responsive">
-                <thead class="table-dark">
-                    <th>#</th>
-                    <th style="width:auto">الرقم المرجعي</th>
-                    <th style="width:auto">أسم المدينة</th>
-                    <th style="width:auto">كود المدينة</th>
-                    <th style="width:auto">الإجراءات</th>
-                </thead>
-                <tbody>
-                    <?php foreach ($cities as $row): ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $row->city_id ?></td>
-                            <td><?= $row->city_name ?></td>
-                            <td><?= $row->city_code ?></td>
-                            <td>
-                                <a href="<?= ROOT ?>/cities/edit/<?=base64_encode($row->city_id)?>" class='btn btn-success'>تعديل</a>
-                                <a href="<?= ROOT ?>/cities/delete/<?=base64_encode($row->city_id)?>" class='btn btn-danger'>حذف</a>
-                            </td>
-                        </tr>
 
+        <table class="table table-bordered text-center table-sm table-responsive  table-striped">
+            <thead class="table-dark">
+                <th style="color:white">#</th>
+                <th style="color:white">الرقم المرجعي</th>
+                <th style="color:white">أسم المدينة</th>
+                <th style="color:white">كود المدينة</th>
+                <th style="color:white">الإجراءات</th>
+            </thead>
+            <tbody>
+            <?php if(!empty($cities)):?>
+                <?php foreach ($cities as $row) : ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $row->city_id ?></td>
+                        <td><?= $row->city_name ?></td>
+                        <td><?= $row->city_code ?></td>
+                        <td>
+                            <a href="<?= ROOT ?>/cities/edit/<?= base64_encode($row->city_id) ?>" class='btn btn-success'> 
+                            <i class='bx bxs-edit'></i> </a>
+                            <a href="<?= ROOT ?>/cities/delete/<?= base64_encode($row->city_id) ?>" class='btn btn-danger confirm'>
+                            <i class='bx bxs-trash'> </i></a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                <?php else:?>
+                <h8 style="color: red"> لا توجد بيانات - يرجى إضافة مدينة </h8>
+                 <?php endif;?>
 
-                    <?php endforeach ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
+            </tbody>
+        </table>
 
     </div>
 

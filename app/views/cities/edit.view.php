@@ -21,11 +21,11 @@
                      value="<?=$cityData->city_name?>" placeHolder="إسم المدينة" require="required"><br>
                     <input class="form-control" name="city_code" type="text"
                      value="<?=$cityData->city_code?>" placeHolder="كود المدينة مثل 'MED'"><br>
-                    <input class="btn btn-success btn_block" name="btn_edit_city" type="submit" value="حفظ التعديلات" />
-                    <input class="btn btn-danger btn_block" name="btn_canceledit_city" type="submit" value="إلغاء التعديلات" />
+                    <input class="btn btn-success btn_block"  type="submit" value="حفظ التعديلات" />
+                    <a class="btn btn-danger btn_block" href="<?= ROOT ?>/cities"> إلغاء التعديلات </a>
                 </form>
                 <?php else:?>
-                <h1>لا توجد بيانات</h1>
+                <h5 style="color: red"> هذه المدينة غير موجودة </h5>
                  <?php endif;?>
             </div>
 

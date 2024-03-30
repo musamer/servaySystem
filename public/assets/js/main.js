@@ -31,10 +31,10 @@ let menu, animate;
   });
 	// confirm delete button
 	$('.confirm').click(function(){   
-		return confirm('هل أنت متأكد من رغبتك بالحذف ؟ ،\n\n هذه الخطوة لا تراجع عنها');
+		return confirm('هل أنت متأكد من رغبتك بالحذف ؟ \n\n هذه الخطوة لا تراجع عنها');
 	});
 	$('.aprr').click(function(){   
-		return confirm(' هل أنت متأكد من رغبتك بالإعتماد ؟ ،\n\nهذه الخطوة لا تراجع عنها ');
+		return confirm(' هل أنت متأكد من رغبتك بالإعتماد ؟ \n\nهذه الخطوة لا تراجع عنها ');
 	});
   // Display menu toggle (layout-menu-toggle) on hover with delay
   let delay = function (elem, callback) {
