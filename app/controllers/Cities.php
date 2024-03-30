@@ -12,10 +12,10 @@ class Cities
 
 	public function index()
 	{
-		// $ses  = new \Core\Session;
-		// if (!$ses->is_logged_in()) {
-		// 	redirect('login');
-		// }
+		$ses  = new \Core\Session;
+		if (!$ses->is_logged_in()) {
+			redirect('login');
+		}
 
 		$cities = new \Model\Cities;
 		$cities->order_column = 'city_id';
@@ -33,10 +33,10 @@ class Cities
 	public function add()
 	{
 
-		// $ses  = new \Core\Session;
-		// if (!$ses->is_logged_in()) {
-		// 	redirect('login');
-		// }
+		$ses  = new \Core\Session;
+		if (!$ses->is_logged_in()) {
+			redirect('login');
+		}
 		$cities = new \Model\Cities;
 		$req = new \core\Request;
 
@@ -61,10 +61,10 @@ class Cities
 
 	public function edit()
 	{  	
-		// $ses  = new \Core\Session;
-		// if (!$ses->is_logged_in()) {
-		// 	redirect('login');
-		// }
+		$ses  = new \Core\Session;
+		if (!$ses->is_logged_in()) {
+			redirect('login');
+		}
 
 
 		$cities = new \Model\Cities;
@@ -87,10 +87,10 @@ class Cities
 
 	public function delete()
 	{
-		// $ses  = new \Core\Session;
-		// if (!$ses->is_logged_in()) {
-		// 	redirect('login');
-		// }
+		$ses  = new \Core\Session;
+		if (!$ses->is_logged_in()) {
+			redirect('login');
+		}
 
 
 		$data['cityData'] = new \Model\Cities;
