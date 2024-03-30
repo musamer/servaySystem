@@ -1,6 +1,6 @@
 # Servay System
 ## Edit 
-- Preorder Structure
-- Add Login and Signup pages
-- Update User Model
-- Add Logs Model
+-create : booking controller
+-create : booking  model 
+-create : book,edit, index views
+-create : client,booking,user db
