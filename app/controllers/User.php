@@ -106,7 +106,13 @@ class User
         $this->view('status', $data);
     }
 
-    
+    public function unban()
+    {
+        $id = base64_decode(get_id_from_url($_GET));
+        $userModel = new \Model\User;
+        $userModel->unban($id); // Call the unban method in the User model
+        redirect('user/banned'); // Redirect back to the banned users list
+    }       
   
 
 }

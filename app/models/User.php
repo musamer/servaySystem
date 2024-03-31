@@ -79,4 +79,11 @@ class User
         $data[$field] = $value;
         $this->update($id, $data); // Soft delete user by setting is_deleted to 1
     }
+    
+    public function unban($id)
+{
+    $data['status'] = 'active';
+    $this->update($id, $data); // Update the status to "active" for the specified user ID
+}
+
 }
