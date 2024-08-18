@@ -53,6 +53,7 @@ function redirect($path)
   header("Location: " . ROOT . "/" . $path);
   die;
 }
+
 function get_id_from_url($URL)
 {
   $URL = explode("/", trim($_GET['url'], "/"));
