@@ -29,16 +29,7 @@ let menu, animate;
       window.Helpers.toggleCollapsed();
     });
   });
-	// confirm delete button
-	$('.confirm').click(function(){   
-		return confirm('هل أنت متأكد من رغبتك بالحذف ؟ \n\n هذه الخطوة لا تراجع عنها');
-	});
-	$('.aprr').click(function(){   
-		return confirm(' هل أنت متأكد من رغبتك بالإعتماد ؟ \n\nهذه الخطوة لا تراجع عنها ');
-	});
-	$('.aprr').click(function(){   
-		return confirm(' هل أنت متأكد من رغبتك بالإعتماد ؟ ،\n\nهذه الخطوة لا تراجع عنها ');
-	});
+
   // Display menu toggle (layout-menu-toggle) on hover with delay
   let delay = function (elem, callback) {
     let timeout = null;
@@ -125,24 +116,3 @@ let menu, animate;
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
-function filterTable(inputID,tableID,field) {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById(inputID);
-  filter = input.value.toUpperCase();
-  table = document.getElementById(tableID);
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[field];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
