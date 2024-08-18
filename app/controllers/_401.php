@@ -11,7 +11,7 @@ class _401
 	public function index()
 	{
 		$this->view('header');
-		$this->view('401');
+		$this->view('404');
 		$this->view('footer');
 	}
 }

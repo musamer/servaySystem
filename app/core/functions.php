@@ -54,14 +54,12 @@ function redirect($path)
   die;
 }
 
-function get_id_from_url($URL){
+function get_id_from_url($URL)
+{
   $URL = explode("/", trim($_GET['url'], "/"));
-  $ID = end($URL);
-  return $ID;
+  $id = end($URL);
+  return $id;
 }
-
-
-
 /** load image. if not exist, load placeholder **/
 function get_image(mixed $file = '', string $type = 'post'): string
 {
@@ -332,4 +330,68 @@ function delete_images_from_content(string $content, string $content_new = ''): 
       }
     }
   }
+}
+function formatNumber($number)
+{
+  if ($number < 1000) {
+    return $number;
+  } elseif ($number < 1000000) {
+    return round($number / 1000, 1) . 'ألف';
+  } elseif ($number < 1000000000) {
+    return round($number / 1000000, 1) . 'مليون';
+  } else {
+    return round($number / 1000000000, 1) . 'مليار';
+  }
+}
+function formatDuration($seconds)
+{
+  if ($seconds === 0) {
+    return '0 ثواني';
+  }
+
+  $timeValues = array(
+    array('unit' => 'سنة', 'value' => 31536000),
+    array('unit' => 'شهر', 'value' => 2592000),
+    array('unit' => 'أسبوع', 'value' => 604800),
+    array('unit' => 'يوم', 'value' => 86400),
+    array('unit' => 'ساعة', 'value' => 3600),
+    array('unit' => 'دقيقة', 'value' => 60),
+    array('unit' => 'ثانية', 'value' => 1)
+  );
+
+  $result = '';
+  $count = 0;
+  $maxTime = 0;
+
+  foreach ($timeValues as $time) {
+    if ($seconds >= $time['value']) {
+      $count = floor($seconds / $time['value']);
+      if ($count > $maxTime) {
+        $maxTime = $count;
+        switch ($time['unit']) {
+          case 'سنة':
+            $result = $count . ' ' . $time['unit'] . ' ';
+            break;
+          case 'شهر':
+            $result = $count . ' ' . $time['unit'] . ' ';
+            break;
+          case 'يوم':
+            $result = $count . ' ' . $time['unit'] . ' ';
+            break;
+          case 'ساعة':
+            $result = $count . ' ' . $time['unit'] . ' ';
+            break;
+          case 'دقيقة':
+            $result = $count . ' ' . $time['unit'] . ' ';
+            break;
+          case 'ثانية':
+            $result = $count . ' ' . $time['unit'] . ' ';
+            break;
+        }
+      }
+      $seconds %= $time['value'];
+    }
+  }
+
+  return $result;
 }
